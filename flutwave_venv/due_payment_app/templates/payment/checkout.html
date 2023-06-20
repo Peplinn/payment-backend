@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+<html>
+<head>
+  {% block title %}Checkout{% endblock %}
+  <style>
+    /* CSS styles for the checkout page */
+    /* Add your custom styles here */
+  </style>
+</head>
+<body>
+  <h1>Checkout</h1>
+  
+  <form action="{% url 'process_checkout' %}" method="POST">
+    {% csrf_token %}
+    
+    <!-- Add form fields for customer details, shipping address, payment method, etc. -->
+    
+    <input type="submit" value="Place Order">
+  </form>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+<html>
+<head>
+  {% block title %}Cart{% endblock %}
+  <style>
+    /* CSS styles for cart page */
+  </style>
+</head>
+<body>
+  <h1>Shopping Cart</h1>
+  
+  {% if cart_items %}
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Coupon Code</th>
+          <th>Discount Price</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in cart_items %}
+          <tr>
+            <td>{{ item.product_name }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.coupon_code }}</td>
+            <td>{{ item.discount_price }}</td>
+            <td>{{ item.subtotal }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Total:</td>
+          <td>{{ cart_total }}</td>
+        </tr>
+      </tfoot>
+    </table>
+    <a href="{% url 'checkout' %}">Proceed to Checkout</a>
+  {% else %}
+    <p>Your cart is empty.</p>
+  {% endif %}
+</body>
+</html>
